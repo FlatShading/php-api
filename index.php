@@ -15,29 +15,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 require_once 'config/database.php';
 require_once 'Router.php';
 
+const DATETIME_FORMAT = 'Y-m-d H:i:s';
+
 $router = new Router();
 
 $router->get('/api/health', fn(): array => [
     'status' => 'OK',
     'message' => 'API is running',
-    'timestamp' => time(),
+    'timestamp' => (new DateTimeImmutable())->format(DATETIME_FORMAT),
 ]);
-
-$router->get('/api/users', fn(): array => [
-    'users' => [],
-]);
-
-$router->post('/api/users', function(): array {
-    $data = json_decode(
-        json: file_get_contents('php://input'),
-        associative: true,
-        flags: JSON_THROW_ON_ERROR
-    ) ?? [];
-
-    return [
-        'message' => 'User created',
-        'data' => $data,
-    ];
-});
 
 $router->run();
