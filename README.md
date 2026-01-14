@@ -1,6 +1,6 @@
 # Simple PHP API
 
-A lightweight PHP REST API framework.
+Simple php API
 
 ## Available Routes
 
