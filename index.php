@@ -15,14 +15,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 require_once 'config/database.php';
 require_once 'Router.php';
 
-const DATETIME_FORMAT = 'Y-m-d H:i:s';
+const DATETIME_FORMAT = 'c';
 
 $router = new Router();
 
 $router->get('/api/health', fn(): array => [
     'status' => 'OK',
     'message' => 'API is running',
-    'timestamp' => (new DateTimeImmutable())->format(DATETIME_FORMAT),
+    'datetime' => (new DateTimeImmutable())->format(DATETIME_FORMAT),
 ]);
 
 $router->run();
