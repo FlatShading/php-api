@@ -1,10 +1,16 @@
 <?php
 
 use App\Domains\Auth\Infrastructure\Controllers\AuthController;
-use Illuminate\Http\Request;
+use App\Domains\Auth\Infrastructure\Controllers\ImpersonateController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/login', [AuthController::class, 'login']);
+Route::prefix('auth')->group(function () {
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::get(
+        '/impersonate/{id}',
+        [ImpersonateController::class, 'impersonate']
+    );
+});
 
 Route::get('/health', function () {
     return response()->json([

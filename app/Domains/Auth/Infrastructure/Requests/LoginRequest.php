@@ -4,15 +4,10 @@ declare(strict_types=1);
 
 namespace App\Domains\Auth\Infrastructure\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Support\Requests\BaseRequest;
 
-final class LoginRequest extends FormRequest
+final class LoginRequest extends BaseRequest
 {
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function rules(): array
     {
         return [

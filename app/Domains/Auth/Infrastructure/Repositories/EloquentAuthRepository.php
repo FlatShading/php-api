@@ -13,4 +13,9 @@ final class EloquentAuthRepository implements AuthRepository
     {
         return User::where('email', $email)->first();
     }
+
+    public function findUserById(int $id): ?User
+    {
+        return User::find($id);
+    }
 }

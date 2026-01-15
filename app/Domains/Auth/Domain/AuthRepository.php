@@ -9,4 +9,6 @@ use App\Models\User;
 interface AuthRepository
 {
     public function findUserByEmail(string $email): ?User;
+
+    public function findUserById(int $id): ?User;
 }
