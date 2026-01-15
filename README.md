@@ -1,6 +1,6 @@
 # Simple PHP API
 
-Simple php API
+Simple php API using Laravel.
 
 ## Available Routes
 
