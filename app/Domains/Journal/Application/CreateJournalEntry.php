@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domains\Journal\Application;
 
-use App\Domains\Journal\Application\Exceptions\JournalEntryCreationFailedException;
-use App\Domains\Journal\Domain\JournalEntry;
 use App\Domains\Journal\Domain\JournalRepository;
-use Exception;
 
 final readonly class CreateJournalEntry
 {
@@ -16,22 +13,11 @@ final readonly class CreateJournalEntry
     ) {
     }
 
-    /**
-     * @throws JournalEntryCreationFailedException
-     */
-    public function execute(CreateJournalEntryData $data): JournalEntry
+    public function execute(string $content, int $userId): void
     {
-        try {
-            return $this->journalRepository->create(
-                userId: $data->userId,
-                title: $data->title,
-                content: $data->content,
-            );
-        } catch (Exception $e) {
-            throw new JournalEntryCreationFailedException(
-                'Failed to create journal entry.',
-                previous: $e
-            );
-        }
+        $this->journalRepository->create(
+            userId: $userId,
+            content: $content,
+        );
     }
 }

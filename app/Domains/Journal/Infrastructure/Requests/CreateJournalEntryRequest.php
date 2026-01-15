@@ -11,7 +11,6 @@ final class CreateJournalEntryRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'max:255'],
             'content' => ['required', 'string'],
         ];
     }
