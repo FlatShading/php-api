@@ -6,6 +6,7 @@ namespace App\Domains\Journal\Infrastructure\Repositories;
 
 use App\Domains\Journal\Domain\JournalRepository;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 final class DBQueryBuilderJournalRepository implements JournalRepository
 {
@@ -16,11 +17,10 @@ final class DBQueryBuilderJournalRepository implements JournalRepository
         $now = now();
 
         DB::table('journal_entries')->insert([
+            'id' => Str::uuid()->toString(),
             'user_id' => $userId,
             'title' => $now->format('Y-m-d'),
             'content' => $content,
-            'created_at' => $now,
-            'updated_at' => $now,
         ]);
     }
 }
