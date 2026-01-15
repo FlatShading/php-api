@@ -36,8 +36,8 @@ final class AuthController extends Controller
             return response()->json([
                 'message' => 'Authentication failed.',
             ], 403);
-        } catch (Exception) {
-            return ExceptionResponse::serverError();
+        } catch (Exception $e) {
+            return ExceptionResponse::serverError($e);
         }
     }
 }

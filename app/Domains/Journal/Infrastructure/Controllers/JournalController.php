@@ -25,8 +25,8 @@ final class JournalController extends Controller
             );
 
             return response()->noContent(201);
-        } catch (Exception) {
-            return ExceptionResponse::serverError();
+        } catch (Exception $e) {
+            return ExceptionResponse::serverError($e);
         }
     }
 }

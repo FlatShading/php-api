@@ -31,8 +31,8 @@ final class ImpersonateController extends Controller
             return response()->json([
                 'message' => 'Impersonation failed.',
             ], 403);
-        } catch (Exception) {
-            return ExceptionResponse::serverError();
+        } catch (Exception $e) {
+            return ExceptionResponse::serverError($e);
         }
     }
 }
