@@ -15,3 +15,8 @@ Simple php API using Laravel.
 ```bash
 php artisan serve --port=8000
 ```
+
+### Start frontend
+```bash
+npm run dev
+```
