@@ -1,7 +1,13 @@
+import { BrowserRouter } from 'react-router-dom';
+import { AuthProvider } from '@/contexts/AuthContext';
+import { AppRoutes } from '@/routes';
+
 export function App() {
     return (
-        <div className="min-h-screen flex items-center justify-center">
-            <h1 className="text-3xl font-bold">Hello React</h1>
-        </div>
+        <BrowserRouter>
+            <AuthProvider>
+                <AppRoutes />
+            </AuthProvider>
+        </BrowserRouter>
     );
 }
